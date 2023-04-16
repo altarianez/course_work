@@ -1,9 +1,9 @@
 import json
 
 
-def load_data():
+def load_data(path):
 
-    with open('list.json', 'r', encoding='utf-8') as file:
+    with open(path, 'r', encoding='utf-8') as file:
         data = json.load(file)
     return data
 
@@ -38,9 +38,5 @@ def mask_card(card):
     card = card.split(' ')
     if card[0] == 'Счет':
         return f'{card[0]} **{card[-1][-4:]}'
-    return f'{" ".join(card[:-1])} {card[-1][:4]} {card[-1][4:6]} ** **** {card[-1][-4:]}'
+    return f'{" ".join(card[:-1])} {card[-1][:4]} {card[-1][4:6]}** **** {card[-1][-4:]}'
 
-
-if __name__ == '__main__':
-    file_data = load_data()
-    print(filter_sort_spisok(file_data))
